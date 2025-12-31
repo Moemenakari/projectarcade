@@ -115,17 +115,8 @@ REACT_APP_API_URL=http://localhost:5000
 
 ---
 
-## 📸 Screenshots
 
-### Homepage:
-![Homepage](https://i.imgur.com/example.png)  *<-- Replace with actual screenshot URL*
-
-### Admin Panel:
-![Admin Panel](https://i.imgur.com/example.png)  *<-- Replace with actual screenshot URL*
-
----
-
-## 🐛 Problems & Solutions
+##  Problems & Solutions
 
 ### 1. Images Not Displaying:
 - **Problem:** Images were not showing up on the live website.
