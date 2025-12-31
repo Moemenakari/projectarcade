@@ -6,7 +6,7 @@
 
 ---
 
-##  Live Demo & Links
+## Live Demo & Links
 
 | Component | Link |
 |-----------|------|
@@ -14,24 +14,30 @@
 | **Backend (API)** | https://projectarcade-production.up.railway.app |
 | **GitHub Repository** | https://github.com/Moemenakari/projectarcade |
 
+### Admin Panel Credentials
+
+| Username | Password |
+|----------|----------|
+| Admin    | admin123 |
+
 ---
 
-##  Project Description
+## Project Description
 
 Project Arcade is a full-stack web application designed to solve a real-world problem: providing a one-stop-shop for arcade machine sales, rentals, and event bookings in Lebanon. The application features a user-friendly interface for customers and a powerful admin panel for managing products, orders, users, and events.
 
 ---
 
-##  Functional Requirements
+## Functional Requirements
 
 ### Backend (Node.js):
--  **RESTful API:** Provides endpoints for all application functionalities.
--  **CRUD Operations:** Full support for Create, Read, Update, and Delete operations on all entities.
--  **User Authentication:** Secure Login/Signup functionality using JWT.
--  **File Upload:** Supports image uploads for products.
+- **RESTful API:** Provides endpoints for all application functionalities.
+- **CRUD Operations:** Full support for Create, Read, Update, and Delete operations on all entities.
+- **User Authentication:** Secure Login/Signup functionality using JWT.
+- **File Upload:** Supports image uploads for products.
 
 ### Database (MySQL):
--  **Two Related Entities:**
+- **Two Related Entities:**
   - **Users:** Stores user information and authentication details.
   - **Products:** Stores arcade machine details, pricing, and stock.
   - **Orders:** Stores rental order information.
@@ -39,15 +45,15 @@ Project Arcade is a full-stack web application designed to solve a real-world pr
 - **Data Validation:** Proper data validation and error handling on all inputs.
 
 ### Frontend (React.js):
--  **User Interface:** A modern, responsive UI for customers.
--  **Admin Panel:** A comprehensive dashboard for administrators to manage the application.
+- **User Interface:** A modern, responsive UI for customers.
+- **Admin Panel:** A comprehensive dashboard for administrators to manage the application.
 
 ### Additional Features (Bonus):
--  **Admin Panel:** Fully functional admin panel for managing the entire application.
+- **Admin Panel:** Fully functional admin panel for managing the entire application.
 
 ---
 
-##  Deployment Architecture
+## Deployment Architecture
 
 ### Why Railway for Backend + Database?
 1. **Unified Platform:** Railway provides a seamless experience for hosting both Node.js applications and MySQL databases in a single project.
@@ -72,7 +78,7 @@ Project Arcade is a full-stack web application designed to solve a real-world pr
 
 ---
 
-##  Setup and Installation
+## Setup and Installation
 
 ### Prerequisites:
 - Node.js (v18 or higher)
@@ -115,13 +121,12 @@ REACT_APP_API_URL=http://localhost:5000
 
 ---
 
+## Problems & Solutions
 
-##  Problems & Solutions
-
-### 1. Images Not Displaying:
-- **Problem:** Images were not showing up on the live website.
-- **Reason:** The frontend was trying to fetch images from a relative path (`/uploads/...`) instead of the full backend URL.
-- **Solution:** Updated the frontend code to prepend the `API_URL` to all image paths, ensuring they are fetched from the Railway backend.
+### 1. Images Disappearing After a Short Period:
+- **Problem:** Images uploaded via the Admin Panel would disappear after a few minutes.
+- **Reason:** Railway uses an ephemeral file system, which means any uploaded files are temporary and are deleted upon server restart or after a short period of inactivity.
+- **Solution:** The recommended solution is to use a dedicated cloud storage service like Cloudinary or AWS S3 for permanent file storage. This has been added to the future scope of the project.
 
 ### 2. Admin Panel Delete/Update Failure:
 - **Problem:** The Delete and Update functions in the Admin Panel were failing with a "Something went wrong" error.
@@ -130,8 +135,9 @@ REACT_APP_API_URL=http://localhost:5000
 
 ---
 
-##  Future Scope
+## Future Scope
 
+- [ ] **Implement Cloud Storage:** Integrate a cloud storage service (e.g., Cloudinary, AWS S3) to solve the ephemeral file storage issue on Railway and ensure permanent image uploads.
 - [ ] Implement email notifications for new orders and user registrations.
 - [ ] Add a mobile text message verification system.
 - [ ] Enhance the Admin Panel with more detailed analytics and reporting.
@@ -139,5 +145,4 @@ REACT_APP_API_URL=http://localhost:5000
 
 ---
 
-
-
+**© 2025 Moemen Akari. All Rights Reserved.**
