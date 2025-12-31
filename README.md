@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Live Demo & Links
+##  Live Demo & Links
 
 | Component | Link |
 |-----------|------|
@@ -16,38 +16,38 @@
 
 ---
 
-## 📋 Project Description
+##  Project Description
 
 Project Arcade is a full-stack web application designed to solve a real-world problem: providing a one-stop-shop for arcade machine sales, rentals, and event bookings in Lebanon. The application features a user-friendly interface for customers and a powerful admin panel for managing products, orders, users, and events.
 
 ---
 
-## ✨ Functional Requirements
+##  Functional Requirements
 
 ### Backend (Node.js):
-- ✅ **RESTful API:** Provides endpoints for all application functionalities.
-- ✅ **CRUD Operations:** Full support for Create, Read, Update, and Delete operations on all entities.
-- ✅ **User Authentication:** Secure Login/Signup functionality using JWT.
-- ✅ **File Upload:** Supports image uploads for products.
+-  **RESTful API:** Provides endpoints for all application functionalities.
+-  **CRUD Operations:** Full support for Create, Read, Update, and Delete operations on all entities.
+-  **User Authentication:** Secure Login/Signup functionality using JWT.
+-  **File Upload:** Supports image uploads for products.
 
 ### Database (MySQL):
-- ✅ **Two Related Entities:**
+-  **Two Related Entities:**
   - **Users:** Stores user information and authentication details.
   - **Products:** Stores arcade machine details, pricing, and stock.
   - **Orders:** Stores rental order information.
   - **Events:** Stores event booking details.
-- ✅ **Data Validation:** Proper data validation and error handling on all inputs.
+- **Data Validation:** Proper data validation and error handling on all inputs.
 
 ### Frontend (React.js):
-- ✅ **User Interface:** A modern, responsive UI for customers.
-- ✅ **Admin Panel:** A comprehensive dashboard for administrators to manage the application.
+-  **User Interface:** A modern, responsive UI for customers.
+-  **Admin Panel:** A comprehensive dashboard for administrators to manage the application.
 
 ### Additional Features (Bonus):
-- ✅ **Admin Panel:** Fully functional admin panel for managing the entire application.
+-  **Admin Panel:** Fully functional admin panel for managing the entire application.
 
 ---
 
-## 🚀 Deployment Architecture
+##  Deployment Architecture
 
 ### Why Railway for Backend + Database?
 1. **Unified Platform:** Railway provides a seamless experience for hosting both Node.js applications and MySQL databases in a single project.
@@ -72,7 +72,7 @@ Project Arcade is a full-stack web application designed to solve a real-world pr
 
 ---
 
-## 🔧 Setup and Installation
+##  Setup and Installation
 
 ### Prerequisites:
 - Node.js (v18 or higher)
@@ -139,7 +139,7 @@ REACT_APP_API_URL=http://localhost:5000
 
 ---
 
-## 🚀 Future Scope
+##  Future Scope
 
 - [ ] Implement email notifications for new orders and user registrations.
 - [ ] Add a mobile text message verification system.
@@ -148,4 +148,5 @@ REACT_APP_API_URL=http://localhost:5000
 
 ---
 
-**© 2025 Moemen Akari. All Rights Reserved.**
+
+
