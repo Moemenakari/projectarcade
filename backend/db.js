@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 // Parse MYSQL_URL if available, otherwise use individual environment variables
 let dbConfig;
