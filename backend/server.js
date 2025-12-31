@@ -20,6 +20,23 @@ const eventRoutes = require("./event");
 app.use("/api",eventRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Root route
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Project Arcade API',
+        status: 'Online',
+        version: '1.0.0',
+        endpoints: {
+            auth: ['/api/register', '/api/login', '/api/users'],
+            products: ['/api/product', '/api/addProduct', '/api/update/:id', '/api/stats/product'],
+            orders: ['/api/rentalOrder', '/api/addRentalOrder', '/api/updateStatus', '/api/stats/rentalOrder'],
+            events: ['/api/event', '/api/addEvent']
+        },
+        documentation: 'https://github.com/Moemenakari/projectarcade'
+    });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log("Server is running on port ${PORT}");
