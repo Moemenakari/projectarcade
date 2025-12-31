@@ -4,7 +4,7 @@ const Orders = () => {;
   const [orders, setOrders] = useState([]);
   const loadRentalOrder = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/rentalOrder");
+      const res = await fetch("/api/rentalOrder");
 
       const data = await res.json();
       if (Array.isArray(data)) {
@@ -31,7 +31,7 @@ const Orders = () => {;
       orders.map((o) => (o.id === id ? { ...o, status: newStatus } : o))
     );
     try {
-      const response = await fetch("http://localhost:5000/api/updateStatus", {
+      const response = await fetch("/api/updateStatus", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const Orders = () => {;
     if (window.confirm("Are you sure you want to delete?")) {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/rentalOrder/" + id,
+          "/api/rentalOrder/" + id,
           {
             method: "DELETE",
           }

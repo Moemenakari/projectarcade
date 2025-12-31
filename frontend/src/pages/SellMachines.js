@@ -14,7 +14,7 @@ const SellMachines = () => {
 
   const loadProduct = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/product");
+      const res = await fetch("/api/product");
 
       const data = await res.json();
       if (Array.isArray(data)) {
@@ -49,7 +49,7 @@ const SellMachines = () => {
             >
               {/*  call mn file products  */}
               <img
-                src={`http://localhost:5000/uploads/${pro.image}`}
+                src={`/uploads/${pro.image}`}
                 alt={pro.name}
                 className="w-full h-56 object-cover"
               />

@@ -43,7 +43,7 @@ const Product = () => {
       if (image) {
         dataProduct.append("image", image);
       }
-      const response = await fetch("http://localhost:5000/api/addProduct", {
+      const response = await fetch("/api/addProduct", {
         method: "POST",
         body: dataProduct,
       });
@@ -73,7 +73,7 @@ const Product = () => {
   };
   const loadProduct = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/product");
+      const res = await fetch("/api/product");
 
       const data = await res.json();
       if (Array.isArray(data)) {
@@ -93,7 +93,7 @@ const Product = () => {
     if (window.confirm("Are you sure you want to delete?")) {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/product/" + id,
+          "/api/product/" + id,
           {
             method: "DELETE",
           }
@@ -129,7 +129,7 @@ const Product = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/update/${id}`, {
+      const response = await fetch(`/api/update/${id}`, {
         method: "PUT",
         body: data,
       });

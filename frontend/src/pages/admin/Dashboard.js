@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   const fetchStatsProduct = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/stats/product");
+      const response = await fetch("/api/stats/product");
 
       if (response.ok) {
         const data = await response.json();
@@ -39,7 +39,7 @@ const Dashboard = () => {
   };
   const fetchStatsUser = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/stats/user");
+      const response = await fetch("/api/stats/user");
 
       if (response.ok) {
         const data = await response.json();
@@ -54,7 +54,7 @@ const Dashboard = () => {
   const fetchStatsOrder = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/stats/rentalOrder"
+        "/api/stats/rentalOrder"
       );
 
       if (response.ok) {
@@ -70,7 +70,7 @@ const Dashboard = () => {
   const CalculateRevenue = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/stats/CalculateRevenue"
+        "/api/stats/CalculateRevenue"
       );
 
       if (response.ok) {
@@ -92,7 +92,7 @@ const Dashboard = () => {
   const [orders, setOrders] = useState([]);
   const loadRentalOrder = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/rentalOrder");
+      const res = await fetch("/api/rentalOrder");
 
       const data = await res.json();
       if (Array.isArray(data)) {

@@ -8,7 +8,7 @@ const Home = () => {
   const [product, setProduct] = useState([]);
   const loadProduct = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/product");
+      const res = await fetch("/api/product");
 
       const data = await res.json();
       if (Array.isArray(data)) {
@@ -76,7 +76,7 @@ const Home = () => {
                 className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300"
               >
                 <img
-                  src={`http://localhost:5000/uploads/${machine.image}`}
+                  src={`/uploads/${machine.image}`}
                   alt={machine.name}
                   className="w-full h-48 object-cover"
                 />

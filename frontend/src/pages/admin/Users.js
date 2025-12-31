@@ -4,7 +4,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const loadUsers = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/users");
+      const res = await fetch("/api/users");
 
       const data = await res.json();
       if (Array.isArray(data)) {
@@ -24,7 +24,7 @@ const Users = () => {
     if (window.confirm("Are you sure you want to delete?")) {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/users/" + id,
+          "/api/users/" + id,
           {
             method: "DELETE",
           }
