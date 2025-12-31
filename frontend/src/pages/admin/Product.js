@@ -1,5 +1,5 @@
 import { Plus, Edit2, Trash2 } from "lucide-react";
-import API_URL from "../config";
+import API_URL from "../../config";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const Product = () => {
@@ -44,7 +44,7 @@ const Product = () => {
       if (image) {
         dataProduct.append("image", image);
       }
-      const response = await fetch(`${API_URL}/api/addProduct", {
+      const response = await fetch(`${API_URL}/api/addProduct`, {
         method: "POST",
         body: dataProduct,
       });
@@ -74,7 +74,7 @@ const Product = () => {
   };
   const loadProduct = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/product");
+      const res = await fetch(`${API_URL}/api/product`);
 
       const data = await res.json();
       if (Array.isArray(data)) {

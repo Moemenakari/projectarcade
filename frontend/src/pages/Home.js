@@ -9,7 +9,7 @@ const Home = () => {
   const [product, setProduct] = useState([]);
   const loadProduct = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/product");
+      const res = await fetch(`${API_URL}/api/product`);
 
       const data = await res.json();
       if (Array.isArray(data)) {

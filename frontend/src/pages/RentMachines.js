@@ -32,7 +32,7 @@ const RentMachines = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_URL}/api/addRentalOrder", {
+      const response = await fetch(`${API_URL}/api/addRentalOrder`, {
         method: "POST",
        headers: {
         "Content-Type": "application/json",

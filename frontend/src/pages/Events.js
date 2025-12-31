@@ -24,7 +24,7 @@ const Events = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_URL}/api/addEvent", {
+      const response = await fetch(`${API_URL}/api/addEvent`, {
         method: "POST",
        headers: {
         "Content-Type": "application/json",
