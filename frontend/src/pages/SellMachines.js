@@ -50,7 +50,7 @@ const SellMachines = () => {
             >
               {/*  call mn file products  */}
               <img
-                src={`/uploads/${pro.image}`}
+                src={`${API_URL}/uploads/${pro.image}`}
                 alt={pro.name}
                 className="w-full h-56 object-cover"
               />
