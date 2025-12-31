@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import API_URL from "../config";
 import { Trash2 } from "lucide-react";
 const Event = () => {
   const [events, setEvents] = useState([]);
   const loadEvent = async () => {
     try {
-      const res = await fetch("/api/event");
+      const res = await fetch(`${API_URL}/api/event");
 
       const data = await res.json();
       if (Array.isArray(data)) {
@@ -27,7 +28,7 @@ const Event = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
       try {
-        const response = await fetch("/api/event/" + id, {
+        const response = await fetch(`${API_URL}/api/event/" + id, {
           method: "DELETE",
         });
         if (response.ok) {

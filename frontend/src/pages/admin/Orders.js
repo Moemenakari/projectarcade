@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import API_URL from "../config";
 import { Trash2 } from "lucide-react";
 const Orders = () => {;
   const [orders, setOrders] = useState([]);
   const loadRentalOrder = async () => {
     try {
-      const res = await fetch("/api/rentalOrder");
+      const res = await fetch(`${API_URL}/api/rentalOrder");
 
       const data = await res.json();
       if (Array.isArray(data)) {
@@ -31,7 +32,7 @@ const Orders = () => {;
       orders.map((o) => (o.id === id ? { ...o, status: newStatus } : o))
     );
     try {
-      const response = await fetch("/api/updateStatus", {
+      const response = await fetch(`${API_URL}/api/updateStatus", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 // src/pages/RentMachines.js
+import API_URL from "../config";
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +32,7 @@ const RentMachines = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/addRentalOrder", {
+      const response = await fetch(`${API_URL}/api/addRentalOrder", {
         method: "POST",
        headers: {
         "Content-Type": "application/json",

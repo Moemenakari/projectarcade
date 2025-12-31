@@ -2,6 +2,7 @@
 
 import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch(`${API_URL}/api/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,7 +56,7 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react";
+import API_URL from "../config";
 import { Link } from "react-router-dom";
 // Import all necessary images from the assets folder
 import HeroImage from "../assets/hero_image.jpg";
@@ -8,7 +9,7 @@ const Home = () => {
   const [product, setProduct] = useState([]);
   const loadProduct = async () => {
     try {
-      const res = await fetch("/api/product");
+      const res = await fetch(`${API_URL}/api/product");
 
       const data = await res.json();
       if (Array.isArray(data)) {

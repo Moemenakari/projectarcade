@@ -1,4 +1,5 @@
 import { Users, TrendingUp, ShoppingCart, Package } from "lucide-react";
+import API_URL from "../config";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
@@ -25,7 +26,7 @@ const Dashboard = () => {
 
   const fetchStatsProduct = async () => {
     try {
-      const response = await fetch("/api/stats/product");
+      const response = await fetch(`${API_URL}/api/stats/product");
 
       if (response.ok) {
         const data = await response.json();
@@ -39,7 +40,7 @@ const Dashboard = () => {
   };
   const fetchStatsUser = async () => {
     try {
-      const response = await fetch("/api/stats/user");
+      const response = await fetch(`${API_URL}/api/stats/user");
 
       if (response.ok) {
         const data = await response.json();
@@ -92,7 +93,7 @@ const Dashboard = () => {
   const [orders, setOrders] = useState([]);
   const loadRentalOrder = async () => {
     try {
-      const res = await fetch("/api/rentalOrder");
+      const res = await fetch(`${API_URL}/api/rentalOrder");
 
       const data = await res.json();
       if (Array.isArray(data)) {

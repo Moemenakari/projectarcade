@@ -1,10 +1,11 @@
 import { useState,useEffect } from "react";
+import API_URL from "../config";
 import { Trash2 } from "lucide-react";
 const Users = () => {
   const [users, setUsers] = useState([]);
   const loadUsers = async () => {
     try {
-      const res = await fetch("/api/users");
+      const res = await fetch(`${API_URL}/api/users");
 
       const data = await res.json();
       if (Array.isArray(data)) {

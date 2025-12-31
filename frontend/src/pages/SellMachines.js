@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config";
 import { useEffect,useState } from "react";
 
 const SellMachines = () => {
@@ -14,7 +15,7 @@ const SellMachines = () => {
 
   const loadProduct = async () => {
     try {
-      const res = await fetch("/api/product");
+      const res = await fetch(`${API_URL}/api/product");
 
       const data = await res.json();
       if (Array.isArray(data)) {
