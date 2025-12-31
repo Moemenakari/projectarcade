@@ -94,7 +94,7 @@ const Product = () => {
     if (window.confirm("Are you sure you want to delete?")) {
       try {
         const response = await fetch(
-          "/api/product/" + id,
+          `${API_URL}/api/product/${id}`,
           {
             method: "DELETE",
           }
@@ -130,7 +130,7 @@ const Product = () => {
     }
 
     try {
-      const response = await fetch(`/api/update/${id}`, {
+      const response = await fetch(`${API_URL}/api/update/${id}`, {
         method: "PUT",
         body: data,
       });
