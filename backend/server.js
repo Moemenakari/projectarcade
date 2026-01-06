@@ -19,6 +19,9 @@ app.use("/api", orderRoutes);
 const eventRoutes = require("./event");
 app.use("/api",eventRoutes);
 
+const migrateRoutes = require("./migrate");
+app.use("/api", migrateRoutes);
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Root route
