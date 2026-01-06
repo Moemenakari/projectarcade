@@ -77,7 +77,7 @@ const Home = () => {
                 className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.02] transition duration-300"
               >
                 <img
-                  src={`${API_URL}/uploads/${machine.image}`}
+                  src={machine.image}
                   alt={machine.name}
                   className="w-full h-48 object-cover"
                 />
