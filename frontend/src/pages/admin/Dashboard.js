@@ -55,7 +55,7 @@ const Dashboard = () => {
   const fetchStatsOrder = async () => {
     try {
       const response = await fetch(
-        "/api/stats/rentalOrder"
+        `${API_URL}/api/stats/rentalOrder`
       );
 
       if (response.ok) {
