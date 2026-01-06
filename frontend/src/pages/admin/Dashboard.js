@@ -1,4 +1,4 @@
-import { Users, TrendingUp, ShoppingCart, Package } from "lucide-react";
+import { Users, MessageSquare, ShoppingCart, Package } from "lucide-react";
 import API_URL from "../../config";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,8 +20,8 @@ const Dashboard = () => {
   const [statsOrder, setStatsOrder] = useState({
     rentalOrderCount: 0,
   });
-  const [revenue, setRevenue] = useState({
-    Revenue: 0,
+  const [messages, setMessages] = useState({
+    messagesCount: 0,
   });
 
   const fetchStatsProduct = async () => {
@@ -68,17 +68,14 @@ const Dashboard = () => {
       console.error("Error connecting to server:", error);
     }
   };
-  const CalculateRevenue = async () => {
+  const fetchMessagesCount = async () => {
     try {
-      const response = await fetch(
-        "/api/stats/CalculateRevenue"
-      );
-
+      const response = await fetch(`${API_URL}/api/contact`);
       if (response.ok) {
         const data = await response.json();
-        setRevenue(data);
+        setMessages({ messagesCount: data.length });
       } else {
-        console.error("Failed to fetch stats");
+        console.error("Failed to fetch messages");
       }
     } catch (error) {
       console.error("Error connecting to server:", error);
@@ -88,7 +85,7 @@ const Dashboard = () => {
     fetchStatsProduct();
     fetchStatsUser();
     fetchStatsOrder();
-    CalculateRevenue();
+    fetchMessagesCount();
   }, []);
   const [orders, setOrders] = useState([]);
   const loadRentalOrder = async () => {
@@ -123,12 +120,12 @@ const Dashboard = () => {
         <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white shadow-lg">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-blue-100 text-sm">Total Revenue</p>
+              <p className="text-blue-100 text-sm">Messages</p>
               <p className="text-3xl font-bold mt-2">
-                ${revenue.Revenue.toLocaleString()}
+                {messages.messagesCount}
               </p>
             </div>
-            <TrendingUp className="w-12 h-12 text-blue-200" />
+            <MessageSquare className="w-12 h-12 text-blue-200" />
           </div>
         </div>
 

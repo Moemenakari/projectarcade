@@ -14,6 +14,7 @@ import Product from "./pages/admin/Product";
 import Orders from "./pages/admin/Orders";
 import Users from "./pages/admin/Users";
 import Event from "./pages/admin/Event"
+import Contact from "./pages/admin/Contact"
 
 function App() {
   const MainLayout = () => {
@@ -56,6 +57,7 @@ function App() {
           <Route path="order" element={<Orders />} />
           <Route path="users" element={<Users />} />
           <Route path="events" element={<Event/>}/>
+          <Route path="messages" element={<Contact/>}/>
         </Route>
       </Routes>
     </Router>

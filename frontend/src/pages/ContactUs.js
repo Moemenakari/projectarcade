@@ -17,18 +17,32 @@ const ContactUs = () => {
     }));
   };
 
-  //
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // alert +setdata
-    console.log('Contact Form Submitted:', formData);
-    alert('Thank you for contacting us! We will respond to your message shortly.');
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/addContact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        alert('Thank you for contacting us! We will respond to your message shortly.');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to send message. Please try again.');
+    }
   };
 
   return (

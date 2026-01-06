@@ -1,6 +1,6 @@
 import { Link,useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Users, Package, Home, ShoppingCart, LogOut,PartyPopper,HomeIcon } from "lucide-react";
+import { Users, Package, Home, ShoppingCart, LogOut,PartyPopper,HomeIcon, MessageSquare } from "lucide-react";
 const Sidebar = () => {
   const [currentView, setCurrentView] = useState("dashboard");
   const navigate = useNavigate();
@@ -69,6 +69,17 @@ const Sidebar = () => {
             >
               <PartyPopper className="w-5 h-5" />
               <span>Events</span>
+            </button>
+          </Link>
+          <Link to="messages">
+            <button
+              onClick={() => setCurrentView("messages")}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                currentView === "messages" ? "bg-blue-600" : "hover:bg-gray-700"
+              }`}
+            >
+              <MessageSquare className="w-5 h-5" />
+              <span>Messages</span>
             </button>
           </Link>
         </nav>

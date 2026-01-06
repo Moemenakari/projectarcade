@@ -22,6 +22,9 @@ app.use("/api",eventRoutes);
 const migrateRoutes = require("./migrate");
 app.use("/api", migrateRoutes);
 
+const contactRoutes = require("./contact");
+app.use("/api", contactRoutes);
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Root route
@@ -34,7 +37,8 @@ app.get('/', (req, res) => {
             auth: ['/api/register', '/api/login', '/api/users'],
             products: ['/api/product', '/api/addProduct', '/api/update/:id', '/api/stats/product'],
             orders: ['/api/rentalOrder', '/api/addRentalOrder', '/api/updateStatus', '/api/stats/rentalOrder'],
-            events: ['/api/event', '/api/addEvent']
+            events: ['/api/event', '/api/addEvent'],
+            contacts: ['/api/contact', '/api/addContact']
         },
         documentation: 'https://github.com/Moemenakari/projectarcade'
     });
