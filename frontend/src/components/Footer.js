@@ -83,7 +83,7 @@ const Footer = () => {
                     <p>Beirut, Lebanon</p>
                   </li>
                   <li>
-                    <p>+961 71 123 456</p>
+                    <a href="https://wa.me/96170420110" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500 transition-colors">+961 70 420 110</a>
                   </li>
                   <li>
                     <p>info@arcadeslebanon.com</p>

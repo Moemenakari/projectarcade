@@ -77,6 +77,16 @@ const SellMachines = () => {
                     <span className="font-semibold">{pro.power}</span>
                   </span>
                 </div>
+                
+                <a
+                  href={`https://wa.me/96170420110?text=Hi, I'm interested in buying ${encodeURIComponent(pro.name)} for $${pro.sale_price}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                >
+                  <i className="fab fa-whatsapp text-xl"></i>
+                  Contact on WhatsApp
+                </a>
               </div>
             </div>
           ))}

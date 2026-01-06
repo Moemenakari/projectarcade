@@ -70,8 +70,8 @@ const ContactUs = () => {
                 <p>Tripoli, North Lebanon</p>
               </div>
               <div className="flex items-center">
-                <i className="fas fa-phone-alt text-yellow-600 mr-3"></i>
-                <p>+961 70 123 456</p>
+                <i className="fab fa-whatsapp text-yellow-600 mr-3 text-xl"></i>
+                <a href="https://wa.me/96170420110" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-600 transition-colors">+961 70 420 110</a>
               </div>
               <div className="flex items-center">
                 <i className="fas fa-envelope text-yellow-600 mr-3"></i>
