@@ -1,25 +1,20 @@
 const express = require("express");
 const db = require("./db");
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
 
 const product = express.Router();
-product.use("/uploads", express.static("uploads"));
 
-const storage = multer.diskStorage({
-  destination: "./uploads",
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
+// Use memory storage instead of disk storage
+const storage = multer.memoryStorage();
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 } // Max 5MB
 });
-
-const upload = multer({ storage: storage });
 
 //Add Product
 product.post("/addProduct", upload.single("image"), (req, res) => {
-  const { name, category, sale_price, rental_price, stock, description,power } = req.body;
-  const image = req.file ? req.file.filename : null;
+  const { name, category, sale_price, rental_price, stock, description, power } = req.body;
+  
   if (
     !name ||
     !category ||
@@ -28,14 +23,18 @@ product.post("/addProduct", upload.single("image"), (req, res) => {
     stock === undefined ||
     !description ||
     !power ||
-    !image
+    !req.file
   ) {
     return res.status(400).json({ message: "All fields are required" });
   }
+
+  // Convert image to Base64
+  const imageBase64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+  
   const sql = `INSERT INTO products (name,category,sale_price,rentel_price,stock,description,power,image) VALUES (?,?,?,?,?,?,?,?)`;
   db.query(
     sql,
-    [name, category, sale_price, rental_price, stock, description ,power ,image],
+    [name, category, sale_price, rental_price, stock, description, power, imageBase64],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -61,35 +60,15 @@ product.get("/product", (req, res) => {
 //Delete Product
 product.delete("/product/:id", (req, res) => {
   const productId = req.params.id;
-  const sql = "SELECT image FROM products WHERE id = ?";
-  db.query(sql, [productId], (err, data) => {
+  const deleteSql = "DELETE FROM products WHERE id = ?";
+  db.query(deleteSql, [productId], (err, result) => {
     if (err) {
       console.log(err);
-      return res.status(500).json({ message: "Error finding products" });
+      return res
+        .status(500)
+        .json({ message: "Error Deleting product from DB" });
     }
-    if (data.length === 0) {
-      return res.status(404).json({ message: "Product not found" });
-    }
-    const imageFileName = data[0].image;
-    if (imageFileName) {
-      const imagePath = path.join(__dirname, "uploads", imageFileName);
-      fs.unlink(imagePath, (err) => {
-        console.error("Failed to delete local image:", err);
-      });
-    } else {
-      console.log("Image deleted from folder");
-    }
-
-    const deleteSql = "DELETE FROM products WHERE id = ?";
-    db.query(deleteSql, [productId], (err, result) => {
-      if (err) {
-        console.log(err);
-        return res
-          .status(500)
-          .json({ message: "Error Deleting product from DB" });
-      }
-      res.json({ message: "Deleted successfully" });
-    });
+    res.json({ message: "Deleted successfully" });
   });
 });
 
@@ -97,6 +76,7 @@ product.delete("/product/:id", (req, res) => {
 product.put("/update/:id", upload.single("image"), (req, res) => {
   const productId = req.params.id;
   const { name, category, sale_price, rental_price, stock, description, power } = req.body;
+  
   const sqlGet = "SELECT image FROM products WHERE id = ?";
   db.query(sqlGet, [productId], (err, data) => {
     if (err) {
@@ -107,17 +87,11 @@ product.put("/update/:id", upload.single("image"), (req, res) => {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    let imageFileName = data[0].image; 
+    let imageBase64 = data[0].image; // Keep old image
+    
+    // If new image uploaded
     if (req.file) {
-      imageFileName = req.file.filename;
-      if (data[0].image) {
-        const oldImagePath = path.join(__dirname, "uploads", data[0].image);
-        if (fs.existsSync(oldImagePath)) {
-          fs.unlink(oldImagePath, (err) => {
-            if (err) console.error("Failed to delete old image:", err);
-          });
-        }
-      }
+      imageBase64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
     }
 
     const sqlUpdate = `UPDATE products SET name=?, category=?, sale_price=?, rentel_price=?, stock=?, description=?, power=?, image=? WHERE id=?`;
@@ -132,7 +106,7 @@ product.put("/update/:id", upload.single("image"), (req, res) => {
         stock,
         description,
         power,
-        imageFileName,
+        imageBase64,
         productId,
       ],
       (err, result) => {
