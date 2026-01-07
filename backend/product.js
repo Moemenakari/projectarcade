@@ -22,14 +22,16 @@ product.post("/addProduct", upload.single("image"), (req, res) => {
     !rental_price ||
     stock === undefined ||
     !description ||
-    !power ||
-    !req.file
+    !power
   ) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
-  // Convert image to Base64
-  const imageBase64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+  // Convert image to Base64 (optional)
+  let imageBase64 = null;
+  if (req.file) {
+    imageBase64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+  }
   
   const sql = `INSERT INTO products (name,category,sale_price,rentel_price,stock,description,power,image) VALUES (?,?,?,?,?,?,?,?)`;
   db.query(
