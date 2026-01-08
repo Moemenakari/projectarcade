@@ -91,4 +91,17 @@ auth.get("/stats/user", (req,res) => {
   })
 })
 
+//Make user admin
+auth.put("/make-admin/:id", (req, res) => {
+  const userId = req.params.id;
+  const sql = `UPDATE users SET is_admin = 1 WHERE id = ?`;
+  db.query(sql, [userId], (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ message: "Error updating user" });
+    }
+    res.json({ message: "User is now admin" });
+  });
+});
+
 module.exports = auth;
